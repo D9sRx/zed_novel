@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-Phase 0：架构与 MVP 范围已确认；准备进入 Phase 1。
+Phase 1：项目骨架、Novel grammar 与 Dev Extension 已通过自动化验证；Zed GUI 安装验收待完成。
 
 ## MVP 体验
 
@@ -30,12 +30,24 @@ Phase 0：架构与 MVP 范围已确认；准备进入 Phase 1。
 - [路线图与验收](docs/04-roadmap-and-acceptance.md)
 - [MVP 待确认项](docs/05-mvp-scope-and-open-questions.md)
 - [实施进度](docs/06-implementation-progress.md)
+- [Phase 1 验证记录](docs/07-phase1-verification.md)
 - [详细实施计划](.hermes/plans/2026-08-19_zed-novel-reader-mvp.md)
 
 ## 计划技术栈
 
 Rust + `zed_extension_api` + WebAssembly、TypeScript + Node.js、Tree-sitter、Vitest、LSP。
 
-## 编码启动条件
+## 开发验证
 
-确认 `docs/05-mvp-scope-and-open-questions.md` 中的决策后，才进入 Phase 1。
+```bash
+npm ci
+npm test
+npm run typecheck
+npm run build
+cargo check --locked --manifest-path extension/Cargo.toml
+cargo build --locked --release --target wasm32-wasip2 --manifest-path extension/Cargo.toml
+```
+
+本地 Dev Extension 目录：`extension/`。当前 grammar manifest 使用本地 Git 仓库的 `main` 分支与 `path = "grammar"`；公开发布前必须改为远端仓库 URL 和固定提交 SHA。
+
+详细结果见 [Phase 1 验证记录](docs/07-phase1-verification.md)。

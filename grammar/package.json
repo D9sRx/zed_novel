@@ -1,0 +1,23 @@
+{
+  "name": "@zed-novel-reader/tree-sitter-novel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tree-sitter grammar for the Zed Novel Reader format",
+  "main": "bindings/node",
+  "files": [
+    "grammar.js",
+    "src/**",
+    "test/**"
+  ],
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test && npm run test:queries",
+    "test:queries": "node ../tooling/verify-queries.mjs"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.novel",
+      "file-types": ["novel"]
+    }
+  ]
+}

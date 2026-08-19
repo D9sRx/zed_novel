@@ -1,0 +1,181 @@
+[
+  {
+    "type": "bookmark",
+    "named": true,
+    "fields": {
+      "attributes": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "bookmark_attributes",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "chapter_block",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "chapter_id",
+            "named": true
+          }
+        ]
+      },
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "chapter_title",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "paragraph",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chapter_title",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "metadata_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "metadata_entry",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "metadata_entry",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "metadata_key",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "metadata_value",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "metadata_key",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "paragraph",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "text_line",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bookmark",
+          "named": true
+        },
+        {
+          "type": "chapter_block",
+          "named": true
+        },
+        {
+          "type": "metadata_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "text_line",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "/**",
+    "named": false
+  },
+  {
+    "type": "@bookmark",
+    "named": false
+  },
+  {
+    "type": "@chapter-id",
+    "named": false
+  },
+  {
+    "type": "@format-version",
+    "named": false
+  },
+  {
+    "type": "@novel-title",
+    "named": false
+  },
+  {
+    "type": "bookmark_attributes",
+    "named": true
+  },
+  {
+    "type": "chapter_id",
+    "named": true
+  },
+  {
+    "type": "metadata_value",
+    "named": true
+  }
+]

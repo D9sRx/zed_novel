@@ -1,0 +1,25 @@
+{
+  "name": "zed-novel-reader",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "grammar"
+  ],
+  "scripts": {
+    "test": "npm run grammar:test",
+    "typecheck": "tsc -b --pretty false",
+    "build": "npm run grammar:generate && tsc -b --pretty false",
+    "grammar:generate": "npm exec --workspace @zed-novel-reader/tree-sitter-novel -- tree-sitter generate",
+    "grammar:test": "npm run grammar:generate && npm test --workspace @zed-novel-reader/tree-sitter-novel"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.25.10",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "allowScripts": {
+    "tree-sitter-cli@0.25.10": true
+  }
+}

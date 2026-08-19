@@ -1,0 +1,309 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "novel",
+  "rules": {
+    "source_file": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_newline"
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "metadata_block"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "chapter_block"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "bookmark"
+                  }
+                ]
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_newline"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "metadata_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "/**"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "metadata_entry"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_block_end"
+        }
+      ]
+    },
+    "metadata_entry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_line_prefix"
+        },
+        {
+          "type": "FIELD",
+          "name": "key",
+          "content": {
+            "type": "SYMBOL",
+            "name": "metadata_key"
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "metadata_value"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "metadata_key": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@novel-title"
+        },
+        {
+          "type": "STRING",
+          "value": "@format-version"
+        }
+      ]
+    },
+    "metadata_value": {
+      "type": "PATTERN",
+      "value": "[^\\r\\n]+"
+    },
+    "chapter_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "/**"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_line_prefix"
+        },
+        {
+          "type": "FIELD",
+          "name": "title",
+          "content": {
+            "type": "SYMBOL",
+            "name": "chapter_title"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_blank_line"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "paragraph"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_line_prefix"
+        },
+        {
+          "type": "STRING",
+          "value": "@chapter-id"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "FIELD",
+          "name": "id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "chapter_id"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_block_end"
+        }
+      ]
+    },
+    "chapter_title": {
+      "type": "PATTERN",
+      "value": "[^@* \\t\\r\\n][^\\r\\n]*"
+    },
+    "paragraph": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "text_line"
+            }
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_blank_line"
+            }
+          }
+        ]
+      }
+    },
+    "text_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_line_prefix"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^@* \\t\\r\\n][^\\r\\n]*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "_line_prefix": {
+      "type": "PATTERN",
+      "value": "[ \\t]*\\*[ \\t]+"
+    },
+    "_blank_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]*\\*[ \\t]*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "_block_end": {
+      "type": "PATTERN",
+      "value": "[ \\t]*\\*\\/[ \\t]*"
+    },
+    "chapter_id": {
+      "type": "PATTERN",
+      "value": "[A-Za-z0-9][A-Za-z0-9_-]*"
+    },
+    "bookmark": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "/**"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "STRING",
+          "value": "@bookmark"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "FIELD",
+          "name": "attributes",
+          "content": {
+            "type": "SYMBOL",
+            "name": "bookmark_attributes"
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+\\*\\/"
+        }
+      ]
+    },
+    "bookmark_attributes": {
+      "type": "PATTERN",
+      "value": "[^* \\t\\r\\n]+([ \\t]+[^* \\t\\r\\n]+)*"
+    },
+    "_newline": {
+      "type": "PATTERN",
+      "value": "\\r?\\n"
+    }
+  },
+  "extras": [],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": [],
+  "reserved": {}
+}

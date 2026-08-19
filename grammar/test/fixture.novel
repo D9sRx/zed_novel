@@ -1,0 +1,14 @@
+/**
+ * @novel-title 示例书名
+ * @format-version 1
+ */
+
+/**
+ * 第一章 初见
+ *
+ * 第一段。
+ *
+ * @chapter-id chapter_0001
+ */
+
+/** @bookmark id=main chapter=1 line=2 */

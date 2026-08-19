@@ -1,0 +1,95 @@
+==================
+Metadata block
+==================
+
+/**
+ * @novel-title 示例书名
+ * @format-version 1
+ */
+
+---
+
+(source_file
+  (metadata_block
+    (metadata_entry
+      key: (metadata_key)
+      value: (metadata_value))
+    (metadata_entry
+      key: (metadata_key)
+      value: (metadata_value))))
+
+==================
+Chapter block with paragraphs and id
+==================
+
+/**
+ * 第一章 初见
+ *
+ * 这是正文第一段。
+ * 仍然属于第一段。
+ *
+ * 这是正文第二段。
+ *
+ * @chapter-id chapter_0001
+ */
+
+---
+
+(source_file
+  (chapter_block
+    title: (chapter_title)
+    (paragraph
+      (text_line)
+      (text_line))
+    (paragraph
+      (text_line))
+    id: (chapter_id)))
+
+==================
+Single-line bookmark
+==================
+
+/** @bookmark id=main chapter=1 line=2 */
+
+---
+
+(source_file
+  (bookmark
+    attributes: (bookmark_attributes)))
+
+==================
+Complete document
+==================
+
+/**
+ * @novel-title 示例书名
+ * @format-version 1
+ */
+
+/**
+ * 第一章 初见
+ *
+ * 第一段。
+ *
+ * @chapter-id chapter_0001
+ */
+
+/** @bookmark id=main chapter=1 line=2 */
+
+---
+
+(source_file
+  (metadata_block
+    (metadata_entry
+      key: (metadata_key)
+      value: (metadata_value))
+    (metadata_entry
+      key: (metadata_key)
+      value: (metadata_value)))
+  (chapter_block
+    title: (chapter_title)
+    (paragraph
+      (text_line))
+    id: (chapter_id))
+  (bookmark
+    attributes: (bookmark_attributes)))

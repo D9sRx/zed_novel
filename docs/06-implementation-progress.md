@@ -7,7 +7,7 @@
 | 阶段 | 目标 | 状态 | 提交 |
 |---|---|---|---|
 | Phase 0 | 调研、架构、MVP 确认 | ✅ 已完成 | `docs: define novel reader architecture` |
-| Phase 1 | 骨架与 Novel 语言 | ⏳ 未开始 | - |
+| Phase 1 | 骨架与 Novel 语言 | 🚧 GUI 验收中 | 待提交 |
 | Phase 2 | TXT 导入 | ⏳ 未开始 | - |
 | Phase 3 | EPUB 导入 | ⏳ 未开始 | - |
 | Phase 4 | 进度与恢复 | ⏳ 未开始 | - |
@@ -32,3 +32,19 @@
 - [ ] Dev Extension 安装通过
 - [ ] Windows 端到端验收通过
 - [ ] Conventional Commit 提交
+
+## Phase 1：项目骨架与 Novel 语言
+
+- [x] 初始化 npm workspaces、TypeScript 与统一质量命令
+- [x] 以 corpus 测试先行实现 Novel Tree-sitter grammar
+- [x] 解析 metadata、chapter、paragraph、`@chapter-id` 与 bookmark
+- [x] 添加 highlights、Outline 与 textobjects queries
+- [x] 创建 `extension/` Rust/WASM Dev Extension
+- [x] 验证 `npm test`：4/4 corpus parses，3 组 query 成功
+- [x] 验证 `npm run typecheck`
+- [x] 验证 `npm run build`
+- [x] 验证 `cargo check --manifest-path extension/Cargo.toml`
+- [x] 验证 `cargo build --release --target wasm32-wasip2 --manifest-path extension/Cargo.toml`
+- [ ] 在 Zed GUI 中安装 `extension/` 并打开 `.novel` 验证语言模式与 Outline
+- [ ] 独立代码审查通过
+- [ ] 提交 `feat: add novel language extension foundation`

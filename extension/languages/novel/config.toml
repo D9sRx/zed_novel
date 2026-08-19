@@ -1,0 +1,5 @@
+name = "Novel"
+grammar = "novel"
+path_suffixes = ["novel"]
+tab_size = 2
+hard_tabs = false

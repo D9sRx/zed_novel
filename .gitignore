@@ -1,0 +1,9 @@
+node_modules/
+*.tsbuildinfo
+extension/target/
+grammar/build/
+grammar/node_modules/
+grammar/parser.obj
+grammar/parser.lib
+grammar/parser.exp
+grammar/*.dll

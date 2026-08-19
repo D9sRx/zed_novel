@@ -1,0 +1,30 @@
+{
+  "grammars": [
+    {
+      "name": "novel",
+      "camelcase": "Novel",
+      "scope": "source.novel",
+      "path": ".",
+      "file-types": ["novel"]
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for the Zed Novel Reader format",
+    "authors": [
+      { "name": "Zed Novel Reader contributors" }
+    ],
+    "links": {
+      "repository": "https://github.com/OWNER/zed-novel-reader"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": false,
+    "python": false,
+    "rust": false,
+    "swift": false
+  }
+}
