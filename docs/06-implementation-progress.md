@@ -8,7 +8,7 @@
 |---|---|---|---|
 | Phase 0 | 调研、架构、MVP 确认 | ✅ 已完成 | `docs: define novel reader architecture` |
 | Phase 1 | 骨架与 Novel 语言 | ✅ 已完成 | `9d7b4bc` + 本阶段验收提交 |
-| Phase 2 | TXT 导入 | ✅ 已完成（复审受限） | 待提交 |
+| Phase 2 | TXT 导入 | ✅ 已完成（复审受限） | `633a863` |
 | Phase 3 | EPUB 导入 | ⏳ 未开始 | - |
 | Phase 4 | 进度与恢复 | ⏳ 未开始 | - |
 | Phase 5 | 构建与交付 | ⏳ 未开始 | - |
@@ -68,4 +68,4 @@
 - [x] 构建后 CLI 导入并由 Tree-sitter 实际解析，无 `ERROR`/`MISSING`
 - [x] 修复独立审查发现的 dist ESM、junction 源文件保护和编码歧义阻断项
 - [ ] 最终独立复审通过（子代理工具授权阻止，未得出结论；不是代码失败）
-- [ ] 提交并推送 Phase 2
+- [x] 提交并推送 `633a863 feat: add safe txt novel importer`
