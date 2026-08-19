@@ -4,9 +4,9 @@ description = "Novel language support for distraction-free local reading in Zed"
 version = "0.1.0"
 schema_version = 1
 authors = ["Zed Novel Reader contributors"]
-repository = "https://github.com/OWNER/zed-novel-reader"
+repository = "https://github.com/D9sRx/zed_novel"
 
 [grammars.novel]
-repository = "file://D:/hermesWork/zed-novel-reader"
-rev = "main"
+repository = "https://github.com/D9sRx/zed_novel.git"
+rev = "9d7b4bc8f3e7c060bf646a86d8bcd6647491a069"
 path = "grammar"
