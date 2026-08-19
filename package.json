@@ -3,23 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "grammar"
+    "grammar",
+    "packages/*"
   ],
   "scripts": {
-    "test": "npm run grammar:test",
-    "typecheck": "tsc -b --pretty false",
-    "build": "npm run grammar:generate && tsc -b --pretty false",
+    "test": "npm run grammar:test && vitest run",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "build": "npm run grammar:generate && npm run build --workspace @zed-novel-reader/core && npm run build --workspace @zed-novel-reader/importer && node tooling/verify-dist-cli.mjs",
     "grammar:generate": "npm exec --workspace @zed-novel-reader/tree-sitter-novel -- tree-sitter generate",
     "grammar:test": "npm run grammar:generate && npm test --workspace @zed-novel-reader/tree-sitter-novel"
   },
   "devDependencies": {
+    "@types/node": "^22.15.0",
     "tree-sitter-cli": "^0.25.10",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=22"
   },
   "allowScripts": {
+    "esbuild@0.28.2": true,
     "tree-sitter-cli@0.25.10": true
   }
 }

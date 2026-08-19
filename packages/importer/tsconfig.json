@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "../..",
+    "baseUrl": "../..",
+    "paths": {
+      "@zed-novel-reader/core": ["packages/core/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "../core/src/**/*.ts"]
+}
