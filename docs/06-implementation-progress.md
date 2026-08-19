@@ -7,7 +7,7 @@
 | 阶段 | 目标 | 状态 | 提交 |
 |---|---|---|---|
 | Phase 0 | 调研、架构、MVP 确认 | ✅ 已完成 | `docs: define novel reader architecture` |
-| Phase 1 | 骨架与 Novel 语言 | 🚧 GUI 验收中 | 待提交 |
+| Phase 1 | 骨架与 Novel 语言 | ✅ 已完成 | `9d7b4bc` + 本阶段验收提交 |
 | Phase 2 | TXT 导入 | ⏳ 未开始 | - |
 | Phase 3 | EPUB 导入 | ⏳ 未开始 | - |
 | Phase 4 | 进度与恢复 | ⏳ 未开始 | - |
@@ -45,6 +45,8 @@
 - [x] 验证 `npm run build`
 - [x] 验证 `cargo check --manifest-path extension/Cargo.toml`
 - [x] 验证 `cargo build --release --target wasm32-wasip2 --manifest-path extension/Cargo.toml`
-- [ ] 在 Zed GUI 中安装 `extension/` 并打开 `.novel` 验证语言模式与 Outline
-- [ ] 独立代码审查通过
-- [ ] 提交 `feat: add novel language extension foundation`
+- [x] 在 Zed GUI 中安装 `extension/` 并打开 `.novel` 验证 Novel 语言模式
+- [x] 用户截图确认 metadata、章节标题、正文、chapter id 与 bookmark 高亮生效
+- [x] 用户通过 `Ctrl+Shift+O` 确认 Outline 显示“第一章 初见”
+- [x] 独立代码审查未发现安全或手写逻辑错误，提交前部署 blocker 已由 Git 提交和 GUI 验收解除
+- [x] 提交 `9d7b4bc feat: add novel language extension foundation`

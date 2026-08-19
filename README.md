@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-Phase 1：项目骨架、Novel grammar 与 Dev Extension 已通过自动化验证；Zed GUI 安装验收待完成。
+Phase 1：项目骨架、Novel grammar 与 Dev Extension 已完成，自动化验证与 Zed GUI 验收均通过。
 
 ## MVP 体验
 

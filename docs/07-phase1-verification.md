@@ -61,10 +61,17 @@ success percentage: 100.00%
 2. 公开发布前必须替换为真实远端仓库 URL 和固定提交 SHA。
 3. Zed GUI 安装必须在 grammar 已进入 `main` 后验证，因为 Zed 会按 manifest clone Git revision，而不会读取未提交文件。
 4. Tree-sitter CLI 在 Windows query 时生成 `grammar/parser.obj/.lib/.exp`；它们已明确忽略，并在提交前清理。
-5. Zed GUI 尚未安装，因此 grammar WASM 与 Outline 的宿主集成仍未验收。
+5. 当前开发 manifest 绑定本机绝对路径，仅适用于这台机器；公开发布前必须改为远端固定 revision。
 
-## 待验收
+## Zed GUI 验收
 
-- Zed GUI 安装 `extension/`。
-- `.novel` 自动识别为 Novel language。
-- Outline 显示“第一章 初见”并可跳转。
+用户于 2026-08-19 在当前 Zed 中完成以下验收：
+
+- 成功通过 `zed: install dev extension` 安装 `extension/`，并选择保留 Dev Extension。
+- 打开 `grammar/test/fixture.novel` 后，右下角语言显示 `Novel`。
+- 用户提供的实际截图确认 JSDoc 格式正常显示，metadata、章节标题、正文、`chapter_0001` 和 bookmark 属性均产生预期差异化高亮。
+- 按 `Ctrl+Shift+O` 后，Outline 显示“第一章 初见”。
+- Zed 生成 `extension/extension.wasm`（599515 bytes）和 `extension/grammars/novel.wasm`（8272 bytes）。两者保留在本机供 Dev Extension 使用，并由 `.gitignore` 排除。
+- `C:/Users/24827/AppData/Local/Zed/extensions/installed/novel-reader` 解析到项目的 `extension/` 目录，确认开发扩展已挂载。
+
+结论：Phase 1 的语言识别、语法高亮、grammar WASM 和 Outline 宿主集成全部通过。
